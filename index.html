@@ -9,25 +9,31 @@
   <script>document.addEventListener('DOMContentLoaded',()=>{ mermaid.initialize({ startOnLoad:true, theme:'default' });});</script>
   <style>
     :root{
-      --bg:#0f1220;--card:#151934;--ink:#e8ecff;--muted:#aab1d6;--accent:#6ea8fe;--accent2:#66d9e8;--ok:#6ee7b7;
+      --bg:#fff;
+      --card:#f7f7f7;
+      --ink:#444;
+      --muted:#888;
+      --accent:#6ea8fe;
+      --accent2:#66d9e8;
+      --ok:#6ee7b7;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic","Meiryo",sans-serif}
-    .deck{height:100%;display:grid;place-items:center}
-    .slide{width:1280px;height:720px;padding:64px 72px;background:var(--card);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:none;position:relative;overflow:hidden}
-    .slide.active{display:block}
-    h1{font-size:52px;line-height:1.1;margin:0 0 8px}
-    h2{font-size:34px;margin:0 0 12px}
-    p.lead{font-size:26px;color:var(--muted);margin:0 0 24px}
-    ul,ol{font-size:26px;line-height:1.55;margin:16px 0 0 22px}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 20px}
-    .kicker{font-size:15px;letter-spacing:.18em;color:var(--accent2);text-transform:uppercase}
-    .pill{font-size:14px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--muted)}
-    .footer{position:absolute;bottom:22px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:16px}
-    .progress{height:4px;background:rgba(255,255,255,.08);position:absolute;left:0;right:0;bottom:0}
-    .progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%}
-    .monos{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;background:#0b0e1a;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.08);font-size:18px}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic","Meiryo",sans-serif}
+  .deck{height:100%;display:grid;place-items:center}
+  .slide{width:1280px;height:720px;padding:64px 72px;background:var(--card);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.08);display:none;position:relative;overflow:hidden;color:var(--ink)}
+  .slide.active{display:block}
+  h1{font-size:52px;line-height:1.1;margin:0 0 8px}
+  h2{font-size:34px;margin:0 0 12px}
+  p.lead{font-size:26px;color:var(--muted);margin:0 0 24px}
+  ul,ol{font-size:26px;line-height:1.55;margin:16px 0 0 22px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{background:#fff;border:1px solid #eee;border-radius:12px;padding:18px 20px;color:var(--ink)}
+  .kicker{font-size:15px;letter-spacing:.18em;color:var(--accent2);text-transform:uppercase}
+  .pill{font-size:14px;padding:6px 8px;border-radius:8px;background:#f0f0f0;border:1px solid #e0e0e0;color:var(--muted)}
+  .footer{position:absolute;bottom:22px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:16px}
+  .progress{height:4px;background:#e0e0e0;position:absolute;left:0;right:0;bottom:0}
+  .progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%}
+  .monos{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;background:#f5f5f5;padding:10px 12px;border-radius:8px;border:1px solid #e0e0e0;font-size:18px;color:#555}
     @media print{.slide{display:block!important;page-break-after:always;box-shadow:none}.progress{display:none}}
     /* シンプルなアイコン（インラインSVG使用） */
     .icon{width:26px;height:26px;vertical-align:-5px;margin-right:10px;fill:currentColor}
@@ -47,11 +53,11 @@
     <section class="slide active">
       <div class="kicker">BEGINNER LT</div>
       <h1><svg class="icon"><use href="#ic-github"/></svg>今GitHubを始める理由</h1>
-      <h2>AI連携と簡単な使い方（絞り込み版）</h2>
+      <h2>簡単な使い方とAI連携</h2>
       <p class="lead">発表者：井上剛 ／ 日付：2025/10/3</p>
       <div class="card" style="position:absolute; right:72px; bottom:82px; max-width:560px;">
         <p style="margin:0; font-size:20px; color:var(--muted)">
-          このLTで分かること：1) AI×GitHubの重要性 2) 初期設定 3) 基本操作 4) 連携例
+          この発表で分かること：1) AI×GitHubの重要性 2) 初期設定 3) 基本操作 4) 連携例
         </p>
       </div>
   <div class="footer"><span class="pill">10分LT</span><span>1/10</span></div>
@@ -249,6 +255,63 @@ flowchart LR
   <div class="footer"><span class="pill">イベント案内</span><span>10/10</span></div>
       <div class="progress"><div></div></div>
     </section>
+
+    <!-- 11. 参考：VS Codeインストール -->
+    <section class="slide">
+      <h2>参考：VS Codeインストール</h2>
+      <ol>
+        <li>以下のURLからアクセス<br>
+          <a href="https://code.visualstudio.com/download" target="_blank">https://code.visualstudio.com/download</a>
+        </li>
+        <li>手持ちのPCにあったものをダウンロード</li>
+      </ol>
+      <div class="footer"><span class="pill">参考</span><span>11/11</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+      <!-- 12. 参考：Gitのインストール確認 -->
+      <section class="slide">
+        <h2>参考：Gitのインストール確認</h2>
+        <p>まず、Gitがはいっているか確認してみましょう！</p>
+        <ol>
+          <li>VS Codeを開いて「ターミナル」→「新しいターミナル」を選択</li>
+          <li>画面下部に表示されたターミナルに <span class="monos">git --version</span> と入力して、Enter</li>
+        </ol>
+        <p>「git version x.xx.x」のような結果の方はGitがインストールされています。</p>
+        <div class="footer"><span class="pill">参考</span><span>12/12</span></div>
+        <div class="progress"><div></div></div>
+      </section>
+        <!-- 13. 参考：Gitのインストール -->
+        <section class="slide">
+          <h2>参考：Gitのインストール</h2>
+          <p>「git: command not found」になってしまったあなたへ</p>
+          <h3>Windowsの場合</h3>
+          <ol>
+            <li>公式サイトにアクセス<br>
+              <a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>
+            </li>
+            <li>「Download for Windows」をクリック<br>
+              自動でインストーラーがダウンロードされる
+            </li>
+            <li>インストーラーを実行<br>
+              ダウンロードされた <span class="monos">Git-x.x.x-64.exe</span> をダブルクリック
+            </li>
+            <li>セットアップ画面の指示に従う<br>
+              デフォルトでOK
+            </li>
+          </ol>
+          <h3>Macの場合</h3>
+          <ol>
+            <li>ターミナルに <span class="monos">git --version</span> を入力し、Enter<br>
+              初めての場合、「Command Line Developer Toolsが必要です。」と出る
+            </li>
+            <li>「インストール」をクリック<br>
+              数分でインストール完了します。
+            </li>
+          </ol>
+          <p>対応完了後に <span class="monos">git --version</span> でバージョンが表示されるか確認</p>
+          <div class="footer"><span class="pill">参考</span><span>13/13</span></div>
+          <div class="progress"><div></div></div>
+        </section>
   </div>
 
   <!-- スライド操作 -->
