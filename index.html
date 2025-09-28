@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>今GitHubを始める理由（AI連携と簡単な使い方）— 絞り込み版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Mermaid（図解用） -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{ mermaid.initialize({ startOnLoad:true, theme:'default' });});</script>
+  <style>
+    :root{
+      --bg:#fff;
+      --card:#f7f7f7;
+      --ink:#444;
+      --muted:#888;
+      --accent:#6ea8fe;
+      --accent2:#66d9e8;
+      --ok:#6ee7b7;
+    }
+    *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic","Meiryo",sans-serif}
+  .deck{height:100%;display:grid;place-items:center}
+  .slide{width:1280px;height:720px;padding:64px 72px;background:var(--card);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.08);display:none;position:relative;overflow:hidden;color:var(--ink)}
+  .slide.active{display:block}
+  h1{font-size:52px;line-height:1.1;margin:0 0 8px}
+  h2{font-size:34px;margin:0 0 12px}
+  p.lead{font-size:26px;color:var(--muted);margin:0 0 24px}
+  ul,ol{font-size:26px;line-height:1.55;margin:16px 0 0 22px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{background:#fff;border:1px solid #eee;border-radius:12px;padding:18px 20px;color:var(--ink)}
+  .kicker{font-size:15px;letter-spacing:.18em;color:var(--accent2);text-transform:uppercase}
+  .pill{font-size:14px;padding:6px 8px;border-radius:8px;background:#f0f0f0;border:1px solid #e0e0e0;color:var(--muted)}
+  .footer{position:absolute;bottom:22px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:16px}
+  .progress{height:4px;background:#e0e0e0;position:absolute;left:0;right:0;bottom:0}
+  .progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%}
+  .monos{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;background:#f5f5f5;padding:10px 12px;border-radius:8px;border:1px solid #e0e0e0;font-size:18px;color:#555}
+    @media print{.slide{display:block!important;page-break-after:always;box-shadow:none}.progress{display:none}}
+    /* シンプルなアイコン（インラインSVG使用） */
+    .icon{width:26px;height:26px;vertical-align:-5px;margin-right:10px;fill:currentColor}
+  </style>
+  <!-- 最小限のアイコンセット -->
+  <svg width="0" height="0" style="position:absolute;visibility:hidden">
+    <symbol id="ic-github" viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 8.36 22.92c.58.11.8-.25.8-.56v-2.17c-3.25.71-3.94-1.39-3.94-1.39-.53-1.35-1.29-1.71-1.29-1.71-1.06-.72.08-.7.08-.7 1.18.08 1.8 1.2 1.8 1.2 1.04 1.78 2.72 1.27 3.38.97.11-.76.41-1.27.75-1.56-2.59-.3-5.32-1.29-5.32-5.76 0-1.27.46-2.31 1.2-3.13-.12-.3-.52-1.53.11-3.19 0 0 .98-.31 3.2 1.19.93-.26 1.93-.39 2.93-.39s2 .13 2.93.39c2.22-1.5 3.2-1.19 3.2-1.19.63 1.66.23 2.89.11 3.19.75.82 1.2 1.86 1.2 3.13 0 4.48-2.73 5.45-5.33 5.75.42.36.8 1.06.8 2.14v3.16c0 .31.21.68.81.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+    <symbol id="ic-branch" viewBox="0 0 24 24"><path d="M6 3a3 3 0 1 0 0 6 3 3 0 0 0 2.83-2h2.84a3 3 0 0 0 2.83 2A3 3 0 1 0 18 6a3 3 0 0 0-2.83 2h-2.84A3 3 0 0 0 9.5 9.5V14a3 3 0 1 0 2 2.83V12h2.67a3 3 0 1 0 0-2H12V9.5A3 3 0 0 0 8.83 7 3 3 0 0 0 6 3Z"/></symbol>
+    <symbol id="ic-robot" viewBox="0 0 24 24"><path d="M12 2a1 1 0 0 1 1 1v1.05A7 7 0 0 1 20 11v6a3 3 0 0 1-3 3h-1v1a1 1 0 1 1-2 0v-1H10v1a1 1 0 1 1-2 0v-1H7a3 3 0 0 1-3-3v-6a7 7 0 0 1 7-6.95V3a1 1 0 0 1 1-1Zm-4 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></symbol>
+    <symbol id="ic-cog" viewBox="0 0 24 24"><path d="M10.325 2.317a2 2 0 0 1 3.35 0l.66 1.102a2 2 0 0 0 1.29.9l1.263.27a2 2 0 0 1 1.58 1.96v1.268a2 2 0 0 0 .5 1.324l.86.99a2 2 0 0 1 0 2.624l-.86.99a2 2 0 0 0-.5 1.324V18.45a2 2 0 0 1-1.58 1.96l-1.263.27a2 2 0 0 0-1.29.9l-.66 1.102a2 2 0 0 1-3.35 0l-.66-1.102a2 2 0 0 0-1.29-.9l-1.263-.27A2 2 0 0 1 4.53 18.45v-1.268a2 2 0 0 0-.5-1.324l-.86-.99a2 2 0 0 1 0-2.624l.86-.99a2 2 0 0 0 .5-1.324V7.55a2 2 0 0 1 1.58-1.96l1.263-.27a2 2 0 0 0 1.29-.9l.66-1.102Z"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><path d="M20.285 6.707a1 1 0 0 1 0 1.414l-9.193 9.193a1 1 0 0 1-1.414 0L3.714 10.35a1 1 0 1 1 1.414-1.414l5.1 5.1 8.486-8.486a1 1 0 0 1 1.571.157Z"/></symbol>
+  </svg>
+</head>
+<body>
+  <div class="deck">
+    <!-- 1. タイトル -->
+    <section class="slide active">
+      <div class="kicker">BEGINNER LT</div>
+      <h1><svg class="icon"><use href="#ic-github"/></svg>今GitHubを始める理由</h1>
+      <h2>簡単な使い方とAI連携</h2>
+      <p class="lead">発表者：井上剛 ／ 日付：2025/10/3</p>
+      <div class="card" style="position:absolute; right:72px; bottom:82px; max-width:560px;">
+        <p style="margin:0; font-size:20px; color:var(--muted)">
+          この発表で分かること：1) AI×GitHubの重要性 2) 初期設定 3) 基本操作 4) 連携例
+        </p>
+      </div>
+  <div class="footer"><span class="pill">10分LT</span><span>1/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 2. 自己紹介 -->
+    <section class="slide">
+      <div class="kicker">INTRODUCTION</div>
+      <h1>自己紹介</h1>
+      <div class="grid-2" style="margin-top:20px">
+        <div class="card">
+          <h2>プロフィール</h2>
+          <ul>
+            <li>名前：井上　剛</li>
+            <li>職種／所属：システム開発／PM</li>
+            <li>GitHub歴：初心者（学習中）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>興味・取り組み</h2>
+          <ul>
+            <li>AIを活用した開発効率化</li>
+            <li>オンプレからクラウドへの移行</li>
+            <li>勉強会／LTでのナレッジ共有</li>
+          </ul>
+        </div>
+      </div>
+  <div class="footer"><span class="pill">自己紹介</span><span>2/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 3. 4点（アジェンダ） -->
+    <section class="slide">
+      <div class="kicker">WHAT YOU WILL LEARN</div>
+      <h1>今回のゴール（4点）</h1>
+      <ol>
+        <li>AIを使ってコーディングする際にGitHubを利用する重要性</li>
+        <li>GitHubの初期設定の流れ</li>
+        <li>GitHubの簡単な操作方法</li>
+        <li>AIとの連携の例（AIエージェント、Copilot）</li>
+      </ol>
+  <div class="footer"><span class="pill">全体像</span><span>3/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 4. 重要性（AI×バージョン管理） -->
+    <section class="slide">
+      <div class="kicker">WHY GITHUB FOR AI</div>
+      <h1><svg class="icon"><use href="#ic-branch"/></svg>AI時代にGitHubが要る理由</h1>
+      <div class="grid-2" style="margin-top:10px">
+        <div class="card">
+          <h2>試行錯誤に強い</h2>
+          <ul>
+            <li>AI提案は一発で当たらないことが多い</li>
+            <li>動いた版／壊れた版を履歴で比較できる</li>
+            <li>原因追跡・ロールバックが容易</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>共有と再利用</h2>
+          <ul>
+            <li>レビュー・Issueで知見が貯まる</li>
+            <li>後から来る自分・仲間が理解しやすい</li>
+            <li>自動化（CI）にAIを組み込みやすい</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span class="pill">本質</span><span>4/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 5. Git・GitHub・GitHub Copilotの違い -->
+    <section class="slide">
+      <div class="kicker">DIFFERENCE</div>
+      <h1>Git・GitHub・GitHub Copilotの違い</h1>
+      <ul>
+        <li><strong>Git</strong>：ローカルで履歴管理・バージョン管理を行うツール</li>
+        <li><strong>GitHub</strong>：Gitのリポジトリをクラウドで共有・コラボできるサービス</li>
+        <li><strong>GitHub Copilot</strong>：AIによるコード補完・生成を支援する拡張機能</li>
+      </ul>
+      <div class="footer"><span class="pill">用語解説</span><span>5/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+
+
+    <!-- 6. GitHubアカウント作成手順 -->
+    <section class="slide">
+      <div class="kicker">ACCOUNT</div>
+      <h1>GitHubアカウント作成手順</h1>
+      <ol>
+        <li>公式サイト（<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>）にアクセス</li>
+        <li>「Sign up」からメールアドレス・パスワードを登録</li>
+        <li>ユーザー名を決めて登録を進める</li>
+        <li>メール認証を行う</li>
+        <li>2段階認証（推奨）を設定</li>
+      </ol>
+      <div class="footer"><span class="pill">アカウント作成</span><span>6/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 7. VS Code拡張「GitHub Pull Requests」インストール -->
+    <section class="slide">
+      <div class="kicker">EXTENSION</div>
+      <h1>VS Code拡張<br>GitHub Pull Requestsの導入</h1>
+      <ol>
+        <li>VS Code左側の拡張機能アイコン（四角いマーク）をクリック</li>
+        <li>検索欄に「GitHub Pull Requests」と入力</li>
+        <li>「GitHub Pull Requests」（GitHub公式）を選択し「インストール」</li>
+        <li>インストール後、サイドバーにGitHubアイコンが追加される</li>
+      </ol>
+      <div class="footer"><span class="pill">拡張機能</span><span>7/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 8. GitHub Pull Requests拡張でのGUI操作 -->
+    <section class="slide">
+      <div class="kicker">BASIC OPS</div>
+      <h1><svg class="icon"><use href="#ic-cog"/></svg>GUIでの基本操作<br>（GitHub Pull Requests拡張）</h1>
+      <ol>
+        <li>サイドバーのGitHubアイコンをクリック</li>
+        <li>「リポジトリ」から対象リポジトリを開く</li>
+        <li>「変更」タブでファイルを編集し、ステージング・コミット</li>
+        <li>「プルリクエスト」タブで新規PRを作成・送信</li>
+        <li>レビューやマージもVS Code上で完結</li>
+      </ol>
+      <ul>
+        <li>コマンド不要、直感的な操作が可能</li>
+        <li>コミットやPRの履歴もGUIで確認できる</li>
+      </ul>
+      <div class="footer"><span class="pill">ハンズオン準備</span><span>7/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 8. 連携例（AIエージェント／Copilot） -->
+    <section class="slide">
+      <div class="kicker">AI INTEGRATIONS</div>
+      <h1><svg class="icon"><use href="#ic-robot"/></svg>AIとの連携（例）</h1>
+      <div class="grid-2" style="margin-top:10px">
+        <div class="card">
+          <h2>AIエージェント連携</h2>
+          <ul>
+            <li>リポジトリを読み込み、要約・質問回答</li>
+            <li>Issueの起票・優先度付けの補助</li>
+            <li>CIで要約・レビュー・リリースノート自動化</li>
+            <li>例：Claude Code（リポジトリ全体をAIで解析・要約・コード生成）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>GitHub Copilot</h2>
+          <ul>
+            <li>エディタ内で補完・生成（雛形/テスト補助）</li>
+            <li>Copilot Chat / for PRs で説明文生成</li>
+            <li>まずは個人学習用リポジトリで試すのが安全</li>
+            <li>例：コードレビューもCopilotにお願いできる</li>
+          </ul>
+        </div>
+      </div>
+  <div class="footer"><span class="pill">実践イメージ</span><span>8/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 9. まとめ（行動喚起） -->
+    <section class="slide">
+      <div class="kicker">TAKEAWAYS</div>
+      <h1><svg class="icon"><use href="#ic-check"/></svg>まとめ</h1>
+      <ul>
+        <li>AI時代は試行錯誤が前提 → 履歴管理の要＝GitHub</li>
+        <li>初期設定は最短5ステップで完了</li>
+        <li>基本操作は clone / add-commit / push-pull の3系統</li>
+        <li>AIエージェント＋Copilotで学習と開発を加速</li>
+      </ul>
+      <p class="lead" style="margin-top:8px">今日のタスク：アカウント作成 → PrivateリポジトリでCopilotを試す</p>
+  <div class="footer"><span class="pill">ありがとうございました</span><span>9/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+        <!-- 10. 勉強会告知 -->
+    <section class="slide">
+      <div class="kicker">ANNOUNCEMENT</div>
+      <h1>📢 GitHub Japan 勉強会のお知らせ</h1>
+      <div class="card" style="margin-top:20px">
+        <h2>内容</h2>
+        <p>GitHubの利用方法について、GitHub Japanの方に勉強会を実施していただきます。</p>
+
+        <h2 style="margin-top:20px">補足</h2>
+        <p>こんにちは、ここでは使用される可能性のある名前と言葉をいくつか紹介します。</p>
+
+        <h2 style="margin-top:20px">開催予定</h2>
+        <ul>
+          <li>実施時期：10月下旬を予定</li>
+          <li>参加希望の方は <strong>Forms</strong> に登録してください</li>
+        </ul>
+      </div>
+  <div class="footer"><span class="pill">イベント案内</span><span>10/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 11. 参考：VS Codeインストール -->
+    <section class="slide">
+      <h2>参考：VS Codeインストール</h2>
+      <ol>
+        <li>以下のURLからアクセス<br>
+          <a href="https://code.visualstudio.com/download" target="_blank">https://code.visualstudio.com/download</a>
+        </li>
+        <li>手持ちのPCにあったものをダウンロード</li>
+      </ol>
+  <div class="footer"><span class="pill">参考</span><span>12/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+      <!-- 12. 参考：Gitのインストール確認 -->
+      <section class="slide">
+        <h2>参考：Gitのインストール確認</h2>
+        <p>まず、Gitがはいっているか確認してみましょう！</p>
+        <ol>
+          <li>VS Codeを開いて「ターミナル」→「新しいターミナル」を選択</li>
+          <li>画面下部に表示されたターミナルに <span class="monos">git --version</span> と入力して、Enter</li>
+        </ol>
+        <p>「git version x.xx.x」のような結果の方はGitがインストールされています。</p>
+  <div class="footer"><span class="pill">参考</span><span>12/13</span></div>
+        <div class="progress"><div></div></div>
+      </section>
+        <!-- 13. 参考：Gitのインストール -->
+        <section class="slide">
+          <h2>参考：Gitのインストール</h2>
+          <p>「git: command not found」になってしまったあなたへ</p>
+          <h3>Windowsの場合</h3>
+          <ol>
+            <li>公式サイトにアクセス<br>
+              <a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>
+            </li>
+            <li>「Download for Windows」をクリック<br>
+              自動でインストーラーがダウンロードされる
+            </li>
+            <li>インストーラーを実行<br>
+              ダウンロードされた <span class="monos">Git-x.x.x-64.exe</span> をダブルクリック
+            </li>
+            <li>セットアップ画面の指示に従う<br>
+              デフォルトでOK
+            </li>
+          </ol>
+          <h3>Macの場合</h3>
+          <ol>
+            <li>ターミナルに <span class="monos">git --version</span> を入力し、Enter<br>
+              初めての場合、「Command Line Developer Toolsが必要です。」と出る
+            </li>
+            <li>「インストール」をクリック<br>
+              数分でインストール完了します。
+            </li>
+          </ol>
+          <p>対応完了後に <span class="monos">git --version</span> でバージョンが表示されるか確認</p>
+          <div class="footer"><span class="pill">参考</span><span>13/13</span></div>
+          <div class="progress"><div></div></div>
+        </section>
+  </div>
+
+  <!-- スライド操作 -->
+  <script>
+    (function(){
+      const slides=[...document.querySelectorAll('.slide')];
+      const pbs=slides.map(s=>s.querySelector('.progress>div'));
+      let i=0;
+      function show(n){
+        i=Math.max(0,Math.min(n,slides.length-1));
+        slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+        const ratio=((i+1)/slides.length)*100;
+        pbs.forEach(pb=>{if(pb)pb.style.width=ratio+'%';});
+      }
+      function onKey(e){
+        if(['ArrowRight','PageDown',' '].includes(e.key))show(i+1);
+        if(['ArrowLeft','PageUp','Backspace'].includes(e.key))show(i-1);
+        if(e.key==='Home')show(0);
+        if(e.key==='End')show(slides.length-1);
+      }
+      document.addEventListener('keydown',onKey);
+      document.addEventListener('click',e=>{ if(e.target.closest('.slide')) show(i+1);});
+      show(0);
+    })();
+  </script>
+
+  <!-- オフライン利用メモ：
+       社内NWでCDNが使えない場合は、mermaid.min.js をローカル配布に差し替えてください。 -->
+</body>
+</html>
