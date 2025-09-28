@@ -60,7 +60,7 @@
           この発表で分かること：1) AI×GitHubの重要性 2) 初期設定 3) 基本操作 4) 連携例
         </p>
       </div>
-  <div class="footer"><span class="pill">10分LT</span><span>1/10</span></div>
+  <div class="footer"><span class="pill">10分LT</span><span>1/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -86,7 +86,7 @@
           </ul>
         </div>
       </div>
-  <div class="footer"><span class="pill">自己紹介</span><span>2/10</span></div>
+  <div class="footer"><span class="pill">自己紹介</span><span>2/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -100,7 +100,7 @@
         <li>GitHubの簡単な操作方法</li>
         <li>AIとの連携の例（AIエージェント、Copilot）</li>
       </ol>
-  <div class="footer"><span class="pill">全体像</span><span>3/10</span></div>
+  <div class="footer"><span class="pill">全体像</span><span>3/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -126,71 +126,70 @@
           </ul>
         </div>
       </div>
-  <div class="footer"><span class="pill">本質</span><span>4/10</span></div>
+      <div class="footer"><span class="pill">本質</span><span>4/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
-    <!-- 5. 図解（AI→GitHub→チーム） -->
+    <!-- 5. Git・GitHub・GitHub Copilotの違い -->
     <section class="slide">
-      <div class="kicker">DIAGRAM</div>
-      <h1>開発の流れ（図解）</h1>
-      <div class="card" style="margin-top:10px">
-        <div class="monos">
-<pre class="mermaid">
-flowchart LR
-  A[ローカル開発] -->|補完/生成| B[AIツール]
-  B -->|検証・修正| C[GitHub リポジトリ]
-  C -->|Push/Pull| D[チーム/将来の自分]
-  style A fill:#1d2545,stroke:#6ea8fe,color:#e8ecff
-  style B fill:#1d2545,stroke:#66d9e8,color:#e8ecff
-  style C fill:#1d2545,stroke:#6ee7b7,color:#e8ecff
-  style D fill:#1d2545,stroke:#aab1d6,color:#e8ecff
-</pre>
-        </div>
-      </div>
-  <div class="footer"><span class="pill">可視化</span><span>5/10</span></div>
+      <div class="kicker">DIFFERENCE</div>
+      <h1>Git・GitHub・GitHub Copilotの違い</h1>
+      <ul>
+        <li><strong>Git</strong>：ローカルで履歴管理・バージョン管理を行うツール</li>
+        <li><strong>GitHub</strong>：Gitのリポジトリをクラウドで共有・コラボできるサービス</li>
+        <li><strong>GitHub Copilot</strong>：AIによるコード補完・生成を支援する拡張機能</li>
+      </ul>
+      <div class="footer"><span class="pill">用語解説</span><span>5/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
-    <!-- 6. 初期設定の流れ -->
+
+
+    <!-- 6. GitHubアカウント作成手順 -->
     <section class="slide">
-      <div class="kicker">SETUP</div>
-      <h1>GitHubの初期設定（最短ルート）</h1>
+      <div class="kicker">ACCOUNT</div>
+      <h1>GitHubアカウント作成手順</h1>
       <ol>
-        <li>アカウント作成（無料）・2段階認証を有効化</li>
-        <li>GitHub Desktop または VS Code 拡張を導入</li>
-        <li>ユーザー名・メール設定、SSH鍵（またはPAT）作成</li>
-        <li>New Repository → READMEを用意（Privateで可）</li>
-        <li>Issue/Projectsを有効にして簡易タスク管理</li>
+        <li>公式サイト（<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>）にアクセス</li>
+        <li>「Sign up」からメールアドレス・パスワードを登録</li>
+        <li>ユーザー名を決めて登録を進める</li>
+        <li>メール認証を行う</li>
+        <li>2段階認証（推奨）を設定</li>
       </ol>
-  <div class="footer"><span class="pill">セットアップ</span><span>6/10</span></div>
+      <div class="footer"><span class="pill">アカウント作成</span><span>6/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
-    <!-- 7. 簡単な操作方法 -->
+    <!-- 7. VS Code拡張「GitHub Pull Requests」インストール -->
+    <section class="slide">
+      <div class="kicker">EXTENSION</div>
+      <h1>VS Code拡張<br>GitHub Pull Requestsの導入</h1>
+      <ol>
+        <li>VS Code左側の拡張機能アイコン（四角いマーク）をクリック</li>
+        <li>検索欄に「GitHub Pull Requests」と入力</li>
+        <li>「GitHub Pull Requests」（GitHub公式）を選択し「インストール」</li>
+        <li>インストール後、サイドバーにGitHubアイコンが追加される</li>
+      </ol>
+      <div class="footer"><span class="pill">拡張機能</span><span>7/13</span></div>
+      <div class="progress"><div></div></div>
+    </section>
+
+    <!-- 8. GitHub Pull Requests拡張でのGUI操作 -->
     <section class="slide">
       <div class="kicker">BASIC OPS</div>
-      <h1><svg class="icon"><use href="#ic-cog"/></svg>基本操作（まずはここから）</h1>
-      <div class="grid-2" style="margin-top:10px">
-        <div class="card">
-          <h2>よく使うコマンド</h2>
-          <ul>
-            <li><span class="monos">git clone</span>：取得</li>
-            <li><span class="monos">git add</span>／<span class="monos">commit</span>：変更記録</li>
-            <li><span class="monos">git push</span>／<span class="monos">pull</span>：共有・取り込み</li>
-          </ul>
-          <p class="lead" style="margin-top:6px">GUI（GitHub Desktop / VS Code）でも同等操作が可能</p>
-        </div>
-        <div class="card">
-          <h2>安全運用のコツ</h2>
-          <ul>
-            <li>小さく頻繁にコミット（意図が残る）</li>
-            <li>ブランチで試行錯誤 → PRで合流</li>
-            <li>コミットメッセージに要点を書く</li>
-          </ul>
-        </div>
-      </div>
-  <div class="footer"><span class="pill">ハンズオン準備</span><span>7/10</span></div>
+      <h1><svg class="icon"><use href="#ic-cog"/></svg>GUIでの基本操作<br>（GitHub Pull Requests拡張）</h1>
+      <ol>
+        <li>サイドバーのGitHubアイコンをクリック</li>
+        <li>「リポジトリ」から対象リポジトリを開く</li>
+        <li>「変更」タブでファイルを編集し、ステージング・コミット</li>
+        <li>「プルリクエスト」タブで新規PRを作成・送信</li>
+        <li>レビューやマージもVS Code上で完結</li>
+      </ol>
+      <ul>
+        <li>コマンド不要、直感的な操作が可能</li>
+        <li>コミットやPRの履歴もGUIで確認できる</li>
+      </ul>
+      <div class="footer"><span class="pill">ハンズオン準備</span><span>7/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -205,6 +204,7 @@ flowchart LR
             <li>リポジトリを読み込み、要約・質問回答</li>
             <li>Issueの起票・優先度付けの補助</li>
             <li>CIで要約・レビュー・リリースノート自動化</li>
+            <li>例：Claude Code（リポジトリ全体をAIで解析・要約・コード生成）</li>
           </ul>
         </div>
         <div class="card">
@@ -213,10 +213,11 @@ flowchart LR
             <li>エディタ内で補完・生成（雛形/テスト補助）</li>
             <li>Copilot Chat / for PRs で説明文生成</li>
             <li>まずは個人学習用リポジトリで試すのが安全</li>
+            <li>例：コードレビューもCopilotにお願いできる</li>
           </ul>
         </div>
       </div>
-  <div class="footer"><span class="pill">実践イメージ</span><span>8/10</span></div>
+  <div class="footer"><span class="pill">実践イメージ</span><span>8/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -231,7 +232,7 @@ flowchart LR
         <li>AIエージェント＋Copilotで学習と開発を加速</li>
       </ul>
       <p class="lead" style="margin-top:8px">今日のタスク：アカウント作成 → PrivateリポジトリでCopilotを試す</p>
-  <div class="footer"><span class="pill">ありがとうございました</span><span>9/10</span></div>
+  <div class="footer"><span class="pill">ありがとうございました</span><span>9/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -252,7 +253,7 @@ flowchart LR
           <li>参加希望の方は <strong>Forms</strong> に登録してください</li>
         </ul>
       </div>
-  <div class="footer"><span class="pill">イベント案内</span><span>10/10</span></div>
+  <div class="footer"><span class="pill">イベント案内</span><span>10/13</span></div>
       <div class="progress"><div></div></div>
     </section>
 
@@ -265,7 +266,7 @@ flowchart LR
         </li>
         <li>手持ちのPCにあったものをダウンロード</li>
       </ol>
-      <div class="footer"><span class="pill">参考</span><span>11/11</span></div>
+  <div class="footer"><span class="pill">参考</span><span>12/13</span></div>
       <div class="progress"><div></div></div>
     </section>
       <!-- 12. 参考：Gitのインストール確認 -->
@@ -277,7 +278,7 @@ flowchart LR
           <li>画面下部に表示されたターミナルに <span class="monos">git --version</span> と入力して、Enter</li>
         </ol>
         <p>「git version x.xx.x」のような結果の方はGitがインストールされています。</p>
-        <div class="footer"><span class="pill">参考</span><span>12/12</span></div>
+  <div class="footer"><span class="pill">参考</span><span>12/13</span></div>
         <div class="progress"><div></div></div>
       </section>
         <!-- 13. 参考：Gitのインストール -->
